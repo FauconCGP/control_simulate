@@ -210,16 +210,16 @@ Status LatController::Init(std::shared_ptr<DependencyInjector> injector,
    0.0, ((lr * cr - lf * cf) / i_z) / v, (l_f * c_f - l_r * c_r) / i_z,
    (-1.0 * (l_f^2 * c_f + l_r^2 * c_r) / i_z) / v;]
   */
-  matrix_a_(0, 1) = (0910-question);
-  matrix_a_(1, 2) = (0910-question);
-  matrix_a_(2, 3) = (0910-question);
-  matrix_a_(3, 2) = (0910-question);
+  matrix_a_(0, 1) = (1.0);
+  matrix_a_(1, 2) = ((2.0*c_f + 2.0*c_r) / m);
+  matrix_a_(2, 3) = (1.0);
+  matrix_a_(3, 2) = ((2.0*l_f * c_f - 2.0*l_r * c_r) / i_z);
 
   matrix_a_coeff_ = Matrix::Zero(matrix_size, matrix_size);
-  matrix_a_coeff_(1, 1) = (0910-question);
-  matrix_a_coeff_(1, 3) = (0910-question);
-  matrix_a_coeff_(3, 1) = (0910-question);
-  matrix_a_coeff_(3, 3) = (0910-question);
+  matrix_a_coeff_(1, 1) = ((-1.0 * (2.0*c_f + 2.0*c_r) / m));
+  matrix_a_coeff_(1, 3) = ((2.0*l_r * c_r - 2.0*l_f * c_f) / m);
+  matrix_a_coeff_(3, 1) = (((2.0*lr * cr - 2.0*lf * cf) / i_z));
+  matrix_a_coeff_(3, 3) = ((-1.0 * (2.0*l_f^2 * c_f + 2.0*l_r^2 * c_r) / i_z));
 
   /*
   b = [0.0, c_f / m, 0.0, l_f * c_f / i_z]^T
