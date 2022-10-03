@@ -211,7 +211,7 @@ Status LatController::Init(std::shared_ptr<DependencyInjector> injector,
    (-1.0 * (l_f^2 * c_f + l_r^2 * c_r) / i_z) / v;]
   */
   matrix_a_(0, 1) = (1.0);
-  matrix_a_(1, 2) = (cf_ + cr_) / (mass_));
+  matrix_a_(1, 2) = ((cf_ + cr_) / (mass_));
   matrix_a_(2, 3) = (1.0);
   matrix_a_(3, 2) = ((lf_ * cf_ - lr_ * cr_) / iz_);
 
